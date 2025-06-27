@@ -1,12 +1,14 @@
-name: Deploymentpipeline
-on:
-push:
-    branches:
-      -main
-    tags:
-      -'*'
+name: Deployment Pipeline
+
+on:  # 触发条件
+  push:
+    branches: [main]  # 推送到 main 分支时触发
+    tags: ["*"]       # 推送任何 tag 时触发（可选）
+  pull_request:
+    branches: [main]  # 针对 main 分支的 PR 时触发
+
 jobs:
-build:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -14,8 +16,9 @@ build:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20.8.1'
+          node-version: "20.8.1"
       - name: Install Dependencies
         run: npm install
       - name: Build NodeProject
         run: npm run build
+      
