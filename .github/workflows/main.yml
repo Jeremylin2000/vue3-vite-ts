@@ -1,0 +1,21 @@
+name: Deploymentpipeline
+on:
+push:
+    branches:
+      -main
+    tags:
+      -'*'
+jobs:
+build:
+    runs-on:ubuntu-latest
+    steps:
+      -name:CheckoutCode
+        uses:actions/checkout@v3
+      -name:SetupNode.js
+        uses:actions/setup-node@v3
+        with:
+          node-version:'20.8.1'
+      -name:InstallDependencies
+        run:npminstall
+      -name:BuildNodeProject
+        run:npmrunbuild
