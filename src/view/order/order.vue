@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // import useMouse from '../../hooks/useMouse'
-import { Teleport } from 'vue'
+// import { Teleport } from 'vue'
 import useMouse from '@/hooks/useMouse'
 
 const { x, y } = useMouse()
@@ -20,11 +20,11 @@ const test = () => {
     <div>Mouse 的位置： {{ x }}, {{ y }}</div>
   </div>
   <el-button @click="test" type="primary">teleport</el-button>
-  <Teleport to="body">
+  <!-- <Teleport to="body">
     <div v-if="flag" class="teleport-box" style="position: absolute; top: 100px; left: 100px; width: 200px; height: 200px; background-color: red;">
       teleport
     </div>
-  </Teleport>
+  </Teleport> -->
 </template>
 
 <style scoped>
