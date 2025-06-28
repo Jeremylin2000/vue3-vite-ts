@@ -2,17 +2,19 @@
 import { ref } from "vue";
 import type { INavMenu } from "../utils/modules";
 import {
-  Document as IconDocument,
-  Menu as IconMenu,
-  Location as IconLocation,
+  Document,
+  Menu,
+  Location,
   Setting,
 } from "@element-plus/icons-vue";
+import { markRaw } from 'vue'
+// ...existing code...
 const menu = ref<INavMenu[]>([
-  { name: "首页", url: "/" },
-  { name: "订单管理", url: "/census" },
-  { name: "统计管理", url: "/manage" },
-  { name: "管理权限", url: "/order" },
-]);
+  { name: "首页", url: "/", icon: markRaw(Document) },
+  { name: "订单管理", url: "/census", icon: markRaw(Menu) },
+  { name: "统计管理", url: "/manage", icon: markRaw(Location) },
+  { name: "管理权限", url: "/order", icon: markRaw(Setting) },
+])
 // defineProps<{ msg: string }>()
 </script>
 
@@ -27,7 +29,8 @@ const menu = ref<INavMenu[]>([
       router
     >
       <el-menu-item :index="item.url" v-for="item in menu" :key="item.url">
-        <el-icon><setting /></el-icon>
+        <el-icon><Component :is="item.icon" /></el-icon>
+         <!-- <el-icon v-if="item.icon" :is="item.icon" /> -->
         <span>{{ item.name }}</span>
       </el-menu-item>
     </el-menu>

@@ -1,6 +1,7 @@
 export interface INavMenu {
     name: string,
-    url: string
+    url: string,
+    icon?: Component; // 或者具体类型，比如 typeof IconDocument
 }
 
 export interface Ihttp {
