@@ -6,12 +6,12 @@ import 'element-plus/dist/index.css'
 import mydirective from './directive/mydirective'
 
 const app = createApp(App)
-const directives = {
+// const directives = {
     
-}
+// }
 app.directive('mydirective', mydirective)
 app.config.errorHandler = (err, vm, info) => {
-    console.error('全局错误:', err, info)
+    console.error('全局错误:', err, vm, info)
 }
 
 app.use(router).mount('#app')

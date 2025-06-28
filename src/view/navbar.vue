@@ -2,9 +2,9 @@
 import { ref } from "vue";
 import type { INavMenu } from "../utils/modules";
 import {
-  Document,
+  Document as IconDocument,
   Menu as IconMenu,
-  Location,
+  Location as IconLocation,
   Setting,
 } from "@element-plus/icons-vue";
 const menu = ref<INavMenu[]>([
